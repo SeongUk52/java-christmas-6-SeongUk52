@@ -5,19 +5,19 @@ import static christmas.constants.SystemConstant.EVENT_MONTH;
 import static christmas.constants.SystemConstant.EVENT_YEAR;
 import static christmas.constants.SystemConstant.FIRST_OF_DAYS;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-public class DateFactory {
-    private DateFactory() {
+public class LocalDateFactory {
+    private LocalDateFactory() {
     }
 
-    private static Date createDateFrom(int date) {
+    private static LocalDate createLocalDateFrom(int date) {
         validateRange(date);
-        return new Date(EVENT_YEAR.getValue(), EVENT_MONTH.getValue(), date);
+        return LocalDate.of(EVENT_YEAR.getValue(), EVENT_MONTH.getValue(), date);
     }
 
-    public static Date createDateFrom(String date) {
-        return createDateFrom(Integer.parseInt(date));
+    public static LocalDate createLocalDateFrom(String date) {
+        return createLocalDateFrom(Integer.parseInt(date));
     }
 
     private static void validateRange(int date) {
