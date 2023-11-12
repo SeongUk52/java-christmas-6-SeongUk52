@@ -9,7 +9,11 @@ public class DateFactory {
     private DateFactory() {
     }
 
-    public static Date createDateFrom(int date) {
-        return new Date(EVENT_YEAR.getValue(), EVENT_MONTH.getValue(), date);
+    public static Date createDateFrom(String date) {
+        return new Date(EVENT_YEAR.getValue(), EVENT_MONTH.getValue(), Integer.parseInt(date));
+    }
+
+    private void validate(String date) {
+
     }
 }
