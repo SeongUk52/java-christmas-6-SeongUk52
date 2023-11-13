@@ -14,11 +14,12 @@ public class Dish {
 
     private Dish(Menu menu, int amount) {
         this.menu = menu;
-        validateAmount(amount);
+        validateAmountRange(amount);
         this.amount = amount;
     }
 
     public static Dish from(String menuAndAmount) {
+        validateMenuFormat(menuAndAmount);
         return Dish.from(Arrays.stream(menuAndAmount.split(DISH_SEPARATOR.toString())).toList());
     }
 
@@ -30,7 +31,13 @@ public class Dish {
         return Menu.findBy(menu);
     }
 
-    private void validateAmount(int amount) {
+    private static void validateMenuFormat(String menuAndAmount) {
+        if (!menuAndAmount.contains(DISH_SEPARATOR.toString())) {
+            throw new IllegalArgumentException(INVALID_ORDER.toString());
+        }
+    }
+
+    private void validateAmountRange(int amount) {
         if (amount < MIN_ORDER_QUANTITY.getValue()) {
             throw new IllegalArgumentException(INVALID_ORDER.toString());
         }
