@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import static christmas.constants.ExceptionMessage.ORDER;
+import static christmas.constants.SystemConstant.BASE_PRICE;
 import static christmas.constants.SystemString.KIOSK_SEPARATOR;
 
 import java.util.Arrays;
@@ -39,6 +40,8 @@ public class Kiosk {
     }
 
     public int calculateTotalPriceBeforeBenefits() {
-        return 0;
+        return dishes.stream()
+                .map(Dish::calculatePrice)
+                .reduce(BASE_PRICE.getValue(), Integer::sum);
     }
 }
