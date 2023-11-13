@@ -25,4 +25,8 @@ public class Discount {
     public String toString() {
         return discountType.toString();
     }
+
+    public int getDicountAmount() {
+        return dicountAmount;
+    }
 }

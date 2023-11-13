@@ -9,6 +9,7 @@ import java.util.List;
 public class BenefitsManager {
     private final List<Discount> discounts;
     private final List<Dish> freeGifts;
+    //TODO 2023-11-14 03:05 불변 리스트로 전환
 
     private BenefitsManager(List<Discount> discounts, List<Dish> freeGifts) {
         this.discounts = discounts;
@@ -32,7 +33,18 @@ public class BenefitsManager {
     }
 
     public int calculateTotalBenefits() {
-        return 0;
-        //TODO 2023-11-13 테스트 코드 작성 후 작성
+        return calculateTotlaDiscounts() + calculateTotalFreeGift();
+    }
+
+    private int calculateTotlaDiscounts() {
+        return discounts.stream()
+                .map(Discount::getDicountAmount)
+                .reduce(0, Integer::sum);
+    }
+
+    private int calculateTotalFreeGift() {
+        return freeGifts.stream()
+                .map(Dish::calculatePrice)
+                .reduce(0, Integer::sum);
     }
 }
