@@ -44,6 +44,6 @@ public class Dish {
     }
 
     public int calculatePrice() {
-        return 0;
+        return menu.getPrice() * amount;
     }
 }
