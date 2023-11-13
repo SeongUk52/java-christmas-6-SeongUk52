@@ -37,4 +37,8 @@ public class Kiosk {
                 .count() == dishes.size();
         //TODO 2023-11-13 21:47 Dishes 클래스 생성 후 거기서 계산하면 더 좋을듯
     }
+
+    public int calculateTotalPriceBeforeBenefits() {
+        return 0;
+    }
 }

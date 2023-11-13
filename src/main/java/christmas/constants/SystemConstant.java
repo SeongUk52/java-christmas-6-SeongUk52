@@ -5,7 +5,8 @@ public enum SystemConstant {
     EVENT_MONTH(12),
     FIRST_OF_DAYS(1),
     END_OF_DAYS(31),
-    MIN_ORDER_QUANTITY(1);
+    MIN_ORDER_QUANTITY(1),
+    BASE_PRICE(0);
 
     private final int value;
 
