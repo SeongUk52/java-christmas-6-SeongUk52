@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class BenefitsManagerTest {
+
     @DisplayName("총 할인률을 계산하는 기능")
     @Test
     void calculateTotalBenefits() {

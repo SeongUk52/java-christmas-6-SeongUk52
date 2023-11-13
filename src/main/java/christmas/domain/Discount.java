@@ -13,11 +13,11 @@ public class Discount {
         this.dicountAmount = dicountAmount;
     }
 
-    public Discount of(DiscountData discountType, LocalDate date, List<Dish> dishes) {
+    public static Discount of(DiscountData discountType, LocalDate date, List<Dish> dishes) {
         return new Discount(discountType, discountType.calculateDiscountAmount(date, dishes));
     }
 
-    public Discount of(DiscountData discountType, LocalDate date) {
+    public static Discount of(DiscountData discountType, LocalDate date) {
         return new Discount(discountType, discountType.calculateDiscountAmount(date));
     }
 }
