@@ -2,7 +2,8 @@ package christmas.constants;
 
 public enum SystemString {
     ERROR_PREFIX("[ERROR] "),
-    DISH_SEPARATOR("-");
+    DISH_SEPARATOR("-"),
+    KIOSK_SEPARATOR(",");
 
     private final String string;
 
