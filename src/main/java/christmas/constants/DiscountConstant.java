@@ -1,9 +1,11 @@
 package christmas.constants;
 
+import static java.time.DayOfWeek.FRIDAY;
+import static java.time.DayOfWeek.SATURDAY;
+
 import christmas.domain.Dish;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.BiFunction;
 
 public enum DiscountConstant {
@@ -14,7 +16,7 @@ public enum DiscountConstant {
         return 0;
     }),
     WEEKDAY("평일 할인", (date, dishes) -> {
-        if (!Objects.equals("금요일, 토요일", date.getDayOfWeek().name())) {
+        if (!isWeekEnd(date)) {
             return dishes.stream()
                     .filter(i -> i.is("디저트"))
                     .map(Dish::getAmount)
@@ -24,7 +26,7 @@ public enum DiscountConstant {
         return 0;
     }),
     WEEKEND("주말 할인", (date, dishes) -> {
-        if (Objects.equals("금요일, 토요일", date.getDayOfWeek().name())) {
+        if (isWeekEnd(date)) {
             return dishes.stream()
                     .filter(i -> i.is("메인"))
                     .map(Dish::getAmount)
@@ -45,6 +47,10 @@ public enum DiscountConstant {
     DiscountConstant(String name, BiFunction<LocalDate, List<Dish>, Integer> discountAmount) {
         this.name = name;
         this.discountAmount = discountAmount;
+    }
+
+    private static boolean isWeekEnd(LocalDate date) {
+        return List.of(FRIDAY, SATURDAY).contains(date.getDayOfWeek());
     }
 
     public int calculateDiscountAmount(LocalDate date, List<Dish> dishes) {
