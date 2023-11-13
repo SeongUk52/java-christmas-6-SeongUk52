@@ -7,6 +7,7 @@ import static christmas.data.DiscountData.WEEKEND;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.domain.Dish;
+import christmas.domain.Dishes;
 import christmas.utils.LocalDateFactory;
 import java.time.LocalDate;
 import java.util.List;
@@ -24,18 +25,18 @@ public class DiscountDataTest {
     @DisplayName("평일 할인 조건식")
     @Test
     void weekDayDiscount() {
-        assertThat(WEEKDAY.calculateDiscountAmount(LocalDateFactory.createLocalDateFrom("13"), List
-                .of(Dish.from("초코케이크-3"),
+        assertThat(WEEKDAY.calculateDiscountAmount(LocalDateFactory.createLocalDateFrom("13"),
+                Dishes.from(List.of(Dish.from("초코케이크-3"),
                         Dish.from("바비큐립-2"),
-                        Dish.from("아이스크림-1")))).isEqualTo(2_023 * 4);
+                        Dish.from("아이스크림-1"))))).isEqualTo(2_023 * 4);
     }
 
     @DisplayName("주말 할인 조건식")
     @Test
     void weekEndDiscount() {
-        assertThat(WEEKEND.calculateDiscountAmount(LocalDateFactory.createLocalDateFrom("16"), List
-                .of(Dish.from("바비큐립-2"),
-                        Dish.from("티본스테이크-1")))).isEqualTo(2_023 * 3);
+        assertThat(WEEKEND.calculateDiscountAmount(LocalDateFactory.createLocalDateFrom("16"),
+                Dishes.from(List.of(Dish.from("바비큐립-2"),
+                        Dish.from("티본스테이크-1"))))).isEqualTo(2_023 * 3);
     }
 
     @DisplayName("특별 할인 조건식")

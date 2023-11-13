@@ -13,10 +13,10 @@ public class BenefitsManagerTest {
     @Test
     void calculateTotalBenefits() {
         assertThat(BenefitsManager.of(LocalDateFactory.createLocalDateFrom("24"),
-                70_000 + 60_000 + 15_000, List
+                Dishes.from(List
                         .of(Dish.from("해산물파스타-2"),
                                 Dish.from("레드와인-1"),
-                                Dish.from("초코케이크-1"))).calculateTotalBenefits())
+                                Dish.from("초코케이크-1")))).calculateTotalBenefits())
                 .isEqualTo(3_300 + 2_023 + 1_000 + 25_000);
     }
 }

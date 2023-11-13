@@ -1,10 +1,8 @@
 package christmas.domain;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -24,12 +22,5 @@ public class KioskTest {
     void createKioskByDuplicateInput(String input) {
         assertThatThrownBy(() -> Kiosk.from(input))
                 .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @DisplayName("할인 전 총 주문 금액을 계산하는 기능")
-    @Test
-    void calculateTotalPriceBeforeBenefits() {
-        assertThat(Kiosk.from("타파스-1,제로콜라-1").calculateRegularPrice())
-                .isEqualTo(8500);
     }
 }

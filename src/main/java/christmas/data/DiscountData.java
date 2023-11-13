@@ -4,6 +4,7 @@ import static java.time.DayOfWeek.FRIDAY;
 import static java.time.DayOfWeek.SATURDAY;
 
 import christmas.domain.Dish;
+import christmas.domain.Dishes;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.function.BiFunction;
@@ -35,9 +36,9 @@ public enum DiscountData {
     });
 
     private final String name;
-    private final BiFunction<LocalDate, List<Dish>, Integer> discountAmount;
+    private final BiFunction<LocalDate, Dishes, Integer> discountAmount;
 
-    DiscountData(String name, BiFunction<LocalDate, List<Dish>, Integer> discountAmount) {
+    DiscountData(String name, BiFunction<LocalDate, Dishes, Integer> discountAmount) {
         this.name = name;
         this.discountAmount = discountAmount;
     }
@@ -46,14 +47,14 @@ public enum DiscountData {
         return List.of(FRIDAY, SATURDAY).contains(date.getDayOfWeek());
     }
 
-    private static int calculateDiscountOf(String categori, List<Dish> dishes) {
+    private static int calculateDiscountOf(String categori, Dishes dishes) {
         return dishes.stream()
                 .filter(i -> i.is(categori))
                 .map(Dish::getAmount)
                 .reduce(0, Integer::sum) * 2_023;
     }
 
-    public int calculateDiscountAmount(LocalDate date, List<Dish> dishes) {
+    public int calculateDiscountAmount(LocalDate date, Dishes dishes) {
         return discountAmount.apply(date, dishes);
     }
 

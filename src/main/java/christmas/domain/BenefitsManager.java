@@ -20,11 +20,11 @@ public class BenefitsManager {
         this.freeGifts = freeGifts;
     }
 
-    public static BenefitsManager of(LocalDate date, int regularPrice, List<Dish> dishes) {
-        return new BenefitsManager(calculateDiscounts(date, dishes), createFreeGifts(regularPrice));
+    public static BenefitsManager of(LocalDate date, Dishes dishes) {
+        return new BenefitsManager(calculateDiscounts(date, dishes), createFreeGifts(dishes.calculateRegularPrice()));
     }
 
-    private static List<Discount> calculateDiscounts(LocalDate date, List<Dish> dishes) {
+    private static List<Discount> calculateDiscounts(LocalDate date, Dishes dishes) {
         return Arrays.stream(DiscountData.values())
                 .map(i -> Discount.of(i, date, dishes))
                 .toList();

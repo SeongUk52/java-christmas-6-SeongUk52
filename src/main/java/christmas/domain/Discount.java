@@ -4,7 +4,6 @@ import static christmas.constants.SystemMessage.BENEFIT_FORMAT;
 
 import christmas.data.DiscountData;
 import java.time.LocalDate;
-import java.util.List;
 
 public class Discount {
     private final DiscountData discountType;
@@ -15,7 +14,7 @@ public class Discount {
         this.dicountAmount = dicountAmount;
     }
 
-    public static Discount of(DiscountData discountType, LocalDate date, List<Dish> dishes) {
+    public static Discount of(DiscountData discountType, LocalDate date, Dishes dishes) {
         return new Discount(discountType, discountType.calculateDiscountAmount(date, dishes));
     }
 
