@@ -1,34 +1,57 @@
 package christmas.constants;
 
+import christmas.domain.Dish;
 import java.time.LocalDate;
-import java.util.function.Function;
+import java.util.List;
+import java.util.Objects;
+import java.util.function.BiFunction;
 
 public enum DiscountConstant {
-    CHRISTMAS_D_DAY("크리스마스 디데이 할인", (date) -> {
+    CHRISTMAS_D_DAY("크리스마스 디데이 할인", (date, dishes) -> {
         if (date.getDayOfMonth() <= 25) {
             return 900 + 100 * date.getDayOfMonth();
         }
         return 0;
-    });
-    /*
-    WEEKDAY("평일 할인", (date) -> {
-        if (date.getDayOfWeek())
     }),
-    WEEKEND(),
-    SPECIAL_DISCOUNT();
+    WEEKDAY("평일 할인", (date, dishes) -> {
+        if (!Objects.equals("금요일, 토요일", date.getDayOfWeek().name())) {
+            return dishes.stream()
+                    .filter(i -> i.is("디저트"))
+                    .map(Dish::getAmount)
+                    .reduce(0, Integer::sum) * 2_023;
 
+        }
+        return 0;
+    }),
+    WEEKEND("주말 할인", (date, dishes) -> {
+        if (Objects.equals("금요일, 토요일", date.getDayOfWeek().name())) {
+            return dishes.stream()
+                    .filter(i -> i.is("메인"))
+                    .map(Dish::getAmount)
+                    .reduce(0, Integer::sum) * 2_023;
+        }
+        return 0;
+    }),
+    SPECIAL_DISCOUNT("특별 할인", (date, dishes) -> {
+        if (List.of(3, 10, 17, 24, 31).contains(date.getDayOfMonth())) {
+            return 1_000;
+        }
+        return 0;
+    });
 
-     */
-    //TODO 2023-11-13 19:33
     private final String name;
-    private final Function<LocalDate, Integer> discountAmount;
+    private final BiFunction<LocalDate, List<Dish>, Integer> discountAmount;
 
-    DiscountConstant(String name, Function<LocalDate, Integer> discountAmount) {
+    DiscountConstant(String name, BiFunction<LocalDate, List<Dish>, Integer> discountAmount) {
         this.name = name;
         this.discountAmount = discountAmount;
     }
 
+    public int calculateDiscountAmount(LocalDate date, List<Dish> dishes) {
+        return discountAmount.apply(date, dishes);
+    }
+
     public int calculateDiscountAmount(LocalDate date) {
-        return discountAmount.apply(date);
+        return discountAmount.apply(date, null);
     }
 }

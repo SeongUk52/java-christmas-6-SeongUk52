@@ -7,6 +7,7 @@ import static christmas.constants.SystemString.DISH_SEPARATOR;
 import christmas.constants.Menu;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Dish {
     private final Menu menu;
@@ -47,7 +48,15 @@ public class Dish {
         return menu.getPrice() * amount;
     }
 
+    public boolean is(String categori) {
+        return Objects.equals(menu.getCategory(), categori);
+    }
+
     public Menu getMenu() {
         return menu;
+    }
+
+    public int getAmount() {
+        return amount;
     }
 }

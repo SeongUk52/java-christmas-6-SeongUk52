@@ -42,4 +42,8 @@ public enum Menu {
     public int getPrice() {
         return this.price;
     }
+
+    public String getCategory() {
+        return this.category;
+    }
 }
