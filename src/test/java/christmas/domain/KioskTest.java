@@ -15,4 +15,12 @@ public class KioskTest {
         assertThatThrownBy(() -> Kiosk.from(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("중복된 메뉴의 예외처리")
+    @ValueSource(strings = {"시저샐러드-1,시저샐러드-1", "제로콜라-1,타파스-1,제로콜라-1"})
+    @ParameterizedTest
+    void createKioskByDuplicateInput(String input) {
+        assertThatThrownBy(() -> Kiosk.from(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

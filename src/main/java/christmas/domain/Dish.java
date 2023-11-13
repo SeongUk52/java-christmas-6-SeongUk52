@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import static christmas.constants.ExceptionMessage.INVALID_ORDER;
+import static christmas.constants.ExceptionMessage.ORDER;
 import static christmas.constants.SystemConstant.MIN_ORDER_QUANTITY;
 import static christmas.constants.SystemString.DISH_SEPARATOR;
 
@@ -33,17 +33,21 @@ public class Dish {
 
     private static void validateMenuFormat(String menuAndAmount) {
         if (!menuAndAmount.contains(DISH_SEPARATOR.toString())) {
-            throw new IllegalArgumentException(INVALID_ORDER.toString());
+            throw new IllegalArgumentException(ORDER.toString());
         }
     }
 
     private void validateAmountRange(int amount) {
         if (amount < MIN_ORDER_QUANTITY.getValue()) {
-            throw new IllegalArgumentException(INVALID_ORDER.toString());
+            throw new IllegalArgumentException(ORDER.toString());
         }
     }
 
     public int calculatePrice() {
         return menu.getPrice() * amount;
+    }
+
+    public Menu getMenu() {
+        return menu;
     }
 }
