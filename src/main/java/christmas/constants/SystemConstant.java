@@ -4,7 +4,8 @@ public enum SystemConstant {
     EVENT_YEAR(2023),
     EVENT_MONTH(12),
     FIRST_OF_DAYS(1),
-    END_OF_DAYS(31);
+    END_OF_DAYS(31),
+    MIN_ORDER_QUANTITY(1);
 
     private final int value;
 

@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import static christmas.constants.ExceptionMessage.INVALID_ORDER;
+import static christmas.constants.SystemConstant.MIN_ORDER_QUANTITY;
 import static christmas.constants.SystemString.DISH_SEPARATOR;
 
 import christmas.constants.Menu;
@@ -12,6 +14,7 @@ public class Dish {
 
     private Dish(Menu menu, int amount) {
         this.menu = menu;
+        validateAmount(amount);
         this.amount = amount;
     }
 
@@ -25,5 +28,11 @@ public class Dish {
 
     private static Menu findMenuFrom(String menu) {
         return Menu.findBy(menu);
+    }
+
+    private void validateAmount(int amount) {
+        if (amount < MIN_ORDER_QUANTITY.getValue()) {
+            throw new IllegalArgumentException(INVALID_ORDER.toString());
+        }
     }
 }
