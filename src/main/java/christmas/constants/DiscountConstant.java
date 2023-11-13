@@ -17,20 +17,13 @@ public enum DiscountConstant {
     }),
     WEEKDAY("평일 할인", (date, dishes) -> {
         if (!isWeekEnd(date)) {
-            return dishes.stream()
-                    .filter(i -> i.is("디저트"))
-                    .map(Dish::getAmount)
-                    .reduce(0, Integer::sum) * 2_023;
-
+            return calculateDiscountOf("디저트", dishes);
         }
         return 0;
     }),
     WEEKEND("주말 할인", (date, dishes) -> {
         if (isWeekEnd(date)) {
-            return dishes.stream()
-                    .filter(i -> i.is("메인"))
-                    .map(Dish::getAmount)
-                    .reduce(0, Integer::sum) * 2_023;
+            return calculateDiscountOf("메인", dishes);
         }
         return 0;
     }),
@@ -51,6 +44,13 @@ public enum DiscountConstant {
 
     private static boolean isWeekEnd(LocalDate date) {
         return List.of(FRIDAY, SATURDAY).contains(date.getDayOfWeek());
+    }
+
+    private static int calculateDiscountOf(String categori, List<Dish> dishes) {
+        return dishes.stream()
+                .filter(i -> i.is(categori))
+                .map(Dish::getAmount)
+                .reduce(0, Integer::sum) * 2_023;
     }
 
     public int calculateDiscountAmount(LocalDate date, List<Dish> dishes) {
