@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class LocalDateFactoryTest {
     @DisplayName("범위를 벗어난 입력이 주어지면 예외처리")
-    @ValueSource(strings = {"99", "0", "-12"})
+    @ValueSource(strings = {"99", "0", "-12", "12.3"})
     @ParameterizedTest
     void createDateFromOutRange(String input) {
         assertThatThrownBy(() -> LocalDateFactory.createLocalDateFrom(input))
