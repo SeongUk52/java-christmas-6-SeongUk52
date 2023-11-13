@@ -28,7 +28,7 @@ public enum EventCautionCondition {
         return condition.apply(dishes);
     }
 
-    public CautionCategory getCategory() {
-        return this.category;
+    public boolean isEqualCategory(CautionCategory category) {
+        return this.category.name().equals(category.name());
     }
 }
