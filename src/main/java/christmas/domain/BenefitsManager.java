@@ -1,19 +1,14 @@
 package christmas.domain;
 
-import christmas.utils.LocalDateFactory;
-import java.time.LocalDate;
+import java.util.List;
 
 public class BenefitsManager {
-    private final LocalDate date;
-    private final int totalPriceBeforeBenfits;
+    private final List<Discount> discounts;
+    private final Dish freeGift;
 
-    private BenefitsManager(LocalDate date, int totalPriceBeforeBenfits) {
-        this.date = date;
-        this.totalPriceBeforeBenfits = totalPriceBeforeBenfits;
-    }
-
-    public static BenefitsManager of(String date, int totalPriceBeforeBenfits) {
-        return new BenefitsManager(LocalDateFactory.createLocalDateFrom(date), totalPriceBeforeBenfits);
+    private BenefitsManager(List<Discount> discounts, Dish freeGift) {
+        this.discounts = discounts;
+        this.freeGift = freeGift;
     }
 
     public int calculateTotalBenefits() {

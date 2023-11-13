@@ -29,7 +29,7 @@ public class KioskTest {
     @DisplayName("할인 전 총 주문 금액을 계산하는 기능")
     @Test
     void calculateTotalPriceBeforeBenefits() {
-        assertThat(Kiosk.from("타파스-1,제로콜라-1").calculateTotalPriceBeforeBenefits())
+        assertThat(Kiosk.from("타파스-1,제로콜라-1").calculateRegularPrice())
                 .isEqualTo(8500);
     }
 }
