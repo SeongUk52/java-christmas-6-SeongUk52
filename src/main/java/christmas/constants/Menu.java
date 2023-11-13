@@ -1,5 +1,7 @@
 package christmas.constants;
 
+import java.util.Arrays;
+
 public enum Menu {
     MUSHROOM_SOUP("양송이수프", 6_000, "에피타이저"),
     TAPAS_DISH("타파스", 5_500, "에피타이저"),
@@ -22,5 +24,17 @@ public enum Menu {
         this.name = name;
         this.price = price;
         this.category = category;
+    }
+
+    public static Menu findBy(String name) {
+        return Arrays.stream(Menu.values())
+                .filter(category -> category.isEqual(name))
+                .findFirst()
+                .orElse(null);
+        //.orElseThrow(() -> new IllegalArgumentException(INVALID_ORDER.toString()));
+    }
+
+    private boolean isEqual(String name) {
+        return this.name.equals(name);
     }
 }
