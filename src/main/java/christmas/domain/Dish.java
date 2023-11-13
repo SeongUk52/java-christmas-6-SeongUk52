@@ -2,6 +2,7 @@ package christmas.domain;
 
 import static christmas.constants.ExceptionMessage.ORDER;
 import static christmas.constants.SystemConstant.MIN_ORDER_QUANTITY;
+import static christmas.constants.SystemMessage.DISH_FORMAT;
 import static christmas.constants.SystemString.DISH_SEPARATOR;
 
 import christmas.data.Menu;
@@ -50,6 +51,10 @@ public class Dish {
 
     public boolean is(String categori) {
         return Objects.equals(menu.getCategory(), categori);
+    }
+
+    public String toMessage() {
+        return String.format(DISH_FORMAT.toString(), menu.toString(), amount);
     }
 
     public Menu getMenu() {

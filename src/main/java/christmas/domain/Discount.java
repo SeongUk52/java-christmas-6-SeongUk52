@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import static christmas.constants.SystemMessage.BENEFIT_FORMAT;
+
 import christmas.data.DiscountData;
 import java.time.LocalDate;
 import java.util.List;
@@ -19,6 +21,13 @@ public class Discount {
 
     public static Discount of(DiscountData discountType, LocalDate date) {
         return new Discount(discountType, discountType.calculateDiscountAmount(date));
+    }
+
+    public String toMessage() {
+        if (dicountAmount == 0) {
+            return null;
+        }
+        return String.format(BENEFIT_FORMAT.toString(), discountType.toString(), dicountAmount);
     }
 
     @Override

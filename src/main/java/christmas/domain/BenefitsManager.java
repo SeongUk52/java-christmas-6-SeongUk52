@@ -1,10 +1,14 @@
 package christmas.domain;
 
+import static christmas.constants.SystemMessage.BENEFIT_FORMAT;
+import static christmas.constants.SystemMessage.FREE_GIFT;
+
 import christmas.data.DiscountData;
 import christmas.data.FreeGiftData;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class BenefitsManager {
     private final List<Discount> discounts;
@@ -46,5 +50,20 @@ public class BenefitsManager {
         return freeGifts.stream()
                 .map(Dish::calculatePrice)
                 .reduce(0, Integer::sum);
+    }
+
+    public List<String> freeGiftToString() {
+        return freeGifts.stream()
+                .map(Dish::toMessage)
+                .toList();
+    }
+
+    public List<String> toStrings() {
+        return Stream.concat(discounts.stream().map(Discount::toMessage), totalFreeGiftToString())
+                .toList();
+    }
+
+    private Stream<String> totalFreeGiftToString() {
+        return String.format(BENEFIT_FORMAT.toString(), FREE_GIFT, calculateTotalFreeGift()).lines();
     }
 }
