@@ -1,5 +1,7 @@
 package christmas.constants;
 
+import static christmas.constants.ExceptionMessage.INVALID_ORDER;
+
 import java.util.Arrays;
 
 public enum Menu {
@@ -30,8 +32,7 @@ public enum Menu {
         return Arrays.stream(Menu.values())
                 .filter(category -> category.isEqual(name))
                 .findFirst()
-                .orElse(null);
-        //.orElseThrow(() -> new IllegalArgumentException(INVALID_ORDER.toString()));
+                .orElseThrow(() -> new IllegalArgumentException(INVALID_ORDER.toString()));
     }
 
     private boolean isEqual(String name) {

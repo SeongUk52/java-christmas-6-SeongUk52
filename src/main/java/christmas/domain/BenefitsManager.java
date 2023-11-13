@@ -12,7 +12,7 @@ public class BenefitsManager {
         this.totalPriceBeforeBenfits = totalPriceBeforeBenfits;
     }
 
-    public BenefitsManager of(String date, int totalPriceBeforeBenfits) {
+    public static BenefitsManager of(String date, int totalPriceBeforeBenfits) {
         return new BenefitsManager(LocalDateFactory.createLocalDateFrom(date), totalPriceBeforeBenfits);
     }
 
