@@ -1,8 +1,11 @@
 package christmas.domain;
 
+import static christmas.constants.Menu.MUSHROOM_SOUP;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -21,5 +24,12 @@ public class DishTest {
     void createDishByIllegalInput(String input) {
         assertThatThrownBy(() -> Dish.from(input))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("주문 금액을 계산하는 기능 테스트")
+    @Test
+    void calculatePrice() {
+        assertThat(Dish.from("양송이수프-5").calculatePrice())
+                .isEqualTo(MUSHROOM_SOUP.getPrice() * 5);
     }
 }

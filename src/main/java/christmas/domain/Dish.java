@@ -42,4 +42,8 @@ public class Dish {
             throw new IllegalArgumentException(INVALID_ORDER.toString());
         }
     }
+
+    public int calculatePrice() {
+        return 0;
+    }
 }

@@ -38,4 +38,8 @@ public enum Menu {
     private boolean isEqual(String name) {
         return this.name.equals(name);
     }
+
+    public int getPrice() {
+        return this.price;
+    }
 }
