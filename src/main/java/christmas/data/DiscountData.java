@@ -1,4 +1,4 @@
-package christmas.constants;
+package christmas.data;
 
 import static java.time.DayOfWeek.FRIDAY;
 import static java.time.DayOfWeek.SATURDAY;
@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.function.BiFunction;
 
-public enum DiscountConstant {
+public enum DiscountData {
     CHRISTMAS_D_DAY("크리스마스 디데이 할인", (date, dishes) -> {
         if (date.getDayOfMonth() <= 25) {
             return 900 + 100 * date.getDayOfMonth();
@@ -37,7 +37,7 @@ public enum DiscountConstant {
     private final String name;
     private final BiFunction<LocalDate, List<Dish>, Integer> discountAmount;
 
-    DiscountConstant(String name, BiFunction<LocalDate, List<Dish>, Integer> discountAmount) {
+    DiscountData(String name, BiFunction<LocalDate, List<Dish>, Integer> discountAmount) {
         this.name = name;
         this.discountAmount = discountAmount;
     }

@@ -1,4 +1,4 @@
-package christmas.constants;
+package christmas.data;
 
 import static christmas.constants.ExceptionMessage.ORDER;
 

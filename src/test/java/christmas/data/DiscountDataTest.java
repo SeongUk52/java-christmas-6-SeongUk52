@@ -1,9 +1,9 @@
-package christmas.constants;
+package christmas.data;
 
-import static christmas.constants.DiscountConstant.CHRISTMAS_D_DAY;
-import static christmas.constants.DiscountConstant.SPECIAL_DISCOUNT;
-import static christmas.constants.DiscountConstant.WEEKDAY;
-import static christmas.constants.DiscountConstant.WEEKEND;
+import static christmas.data.DiscountData.CHRISTMAS_D_DAY;
+import static christmas.data.DiscountData.SPECIAL_DISCOUNT;
+import static christmas.data.DiscountData.WEEKDAY;
+import static christmas.data.DiscountData.WEEKEND;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.domain.Dish;
@@ -12,7 +12,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class DiscountConstantTest {
+public class DiscountDataTest {
     @DisplayName("크리스마스 디데이 할인 조건식")
     @Test
     void dDayDiscount() {

@@ -4,7 +4,7 @@ import static christmas.constants.ExceptionMessage.ORDER;
 import static christmas.constants.SystemConstant.MIN_ORDER_QUANTITY;
 import static christmas.constants.SystemString.DISH_SEPARATOR;
 
-import christmas.constants.Menu;
+import christmas.data.Menu;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;

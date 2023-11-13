@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import static christmas.constants.Menu.MUSHROOM_SOUP;
+import static christmas.data.Menu.MUSHROOM_SOUP;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
