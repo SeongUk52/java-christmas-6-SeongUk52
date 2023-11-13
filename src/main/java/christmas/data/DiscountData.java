@@ -60,4 +60,9 @@ public enum DiscountData {
     public int calculateDiscountAmount(LocalDate date) {
         return discountAmount.apply(date, null);
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

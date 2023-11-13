@@ -20,4 +20,9 @@ public class Discount {
     public static Discount of(DiscountData discountType, LocalDate date) {
         return new Discount(discountType, discountType.calculateDiscountAmount(date));
     }
+
+    @Override
+    public String toString() {
+        return discountType.toString();
+    }
 }
