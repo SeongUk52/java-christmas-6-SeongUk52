@@ -14,4 +14,12 @@ public class DishTest {
         assertThatThrownBy(() -> Dish.from(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("메뉴 형식이 예시와 다른 경우 예외처리하는지 테스트")
+    @ValueSource(strings = {"양송이수프=5", "3-시저샐러드", "양송이수프----20", "양송이수프", "3", "양송이 수프 - 3"})
+    @ParameterizedTest
+    void createDishByIllegalInput(String input) {
+        assertThatThrownBy(() -> Dish.from(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
