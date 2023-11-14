@@ -30,7 +30,7 @@ public class Discount {
     }
 
     public boolean isPresent() {
-        return dicountAmount >= 0;
+        return dicountAmount > 0;
     }
 
     @Override
