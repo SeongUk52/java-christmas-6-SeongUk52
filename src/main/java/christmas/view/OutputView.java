@@ -10,7 +10,6 @@ import static christmas.constants.SubTitle.TOTAL_BENEFITS;
 import static christmas.constants.SystemMessage.INIT_DETAILS;
 import static christmas.constants.SystemMessage.INIT_PLANNER;
 import static christmas.constants.SystemMessage.NOTHING;
-import static christmas.constants.SystemString.BENEFIT_PRICE_FORMAT;
 import static christmas.constants.SystemString.PRICE_FORMAT;
 import static christmas.data.EventBadge.DECEMBER_EVENT_BADGE_CONDITION;
 
@@ -70,13 +69,7 @@ public class OutputView {
 
     private void printTotalBenefits(BenefitsManager benefitsManager) {
         System.out.println(TOTAL_BENEFITS);
-        int totalBenfits = benefitsManager.calculateTotalBenefits();
-        if (totalBenfits == 0) {
-            System.out.printf(PRICE_FORMAT.toString(), totalBenfits);
-        }
-        if (totalBenfits != 0) {
-            System.out.printf(BENEFIT_PRICE_FORMAT.toString(), totalBenfits);
-        }
+        System.out.printf(PRICE_FORMAT.toString(), -benefitsManager.calculateTotalBenefits());
     }
 
     private void printFinalPrice(BenefitsManager benefitsManager, Kiosk kiosk) {
