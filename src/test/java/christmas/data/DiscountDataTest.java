@@ -64,32 +64,32 @@ public class DiscountDataTest {
     @ParameterizedTest
     @MethodSource("provideDateAndDishesForD_Day")
     @DisplayName("크리스마스 디데이 할인 조건식")
-    void dDayDiscount(LocalDate date, int result) {
+    void dDayDiscount(LocalDate date, int expected) {
         assertThat(CHRISTMAS_D_DAY.calculateDiscountAmount(date))
-                .isEqualTo(result);
+                .isEqualTo(expected);
     }
 
     @ParameterizedTest
     @MethodSource("provideDateAndDishesForWeekDay")
     @DisplayName("평일 할인 조건식")
-    void weekDayDiscount(LocalDate date, Dishes dishes, int result) {
+    void weekDayDiscount(LocalDate date, Dishes dishes, int expected) {
         assertThat(WEEKDAY.calculateDiscountAmount(date,
-                dishes)).isEqualTo(result);
+                dishes)).isEqualTo(expected);
     }
 
 
     @ParameterizedTest
     @MethodSource("provideDateAndDishesForWeekEnd")
     @DisplayName("주말 할인 조건식")
-    void weekEndDiscount(LocalDate date, Dishes dishes, int result) {
-        assertThat(WEEKEND.calculateDiscountAmount(date, dishes)).isEqualTo(result);
+    void weekEndDiscount(LocalDate date, Dishes dishes, int expected) {
+        assertThat(WEEKEND.calculateDiscountAmount(date, dishes)).isEqualTo(expected);
     }
 
     @ParameterizedTest
     @MethodSource("provideDateForSpecial")
     @DisplayName("특별 할인 조건식")
-    void specialDiscount(LocalDate date, int result) {
+    void specialDiscount(LocalDate date, int expected) {
         assertThat(SPECIAL_DISCOUNT.calculateDiscountAmount(date))
-                .isEqualTo(result);
+                .isEqualTo(expected);
     }
 }

@@ -22,7 +22,7 @@ public class EventBadgeTest {
     @ParameterizedTest
     @MethodSource("provideIntegerForEventBadge")
     @DisplayName("조건별 12월 이벤트 배지")
-    void getFreeGiftShouldReturnString(int input, String expected) {
+    void getEventBadgeShouldReturnString(int input, String expected) {
         assertEquals(expected, EventBadge.DECEMBER_EVENT_BADGE_CONDITION.getFreeGift(input));
     }
 }
