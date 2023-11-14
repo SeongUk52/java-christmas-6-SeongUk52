@@ -63,9 +63,7 @@ public class BenefitsManager {
         if (freeGifts.isEmpty()) {
             return Optional.empty();
         }
-        return Optional.of(freeGifts.stream()
-                .map(Dish::toMessage)
-                .toList());
+        return Optional.of(freeGifts.toMessages());
     }
 
     public Optional<List<String>> toStrings() {
