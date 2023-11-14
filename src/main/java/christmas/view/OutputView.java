@@ -7,6 +7,7 @@ import static christmas.constants.SubTitle.FREE_GIFT;
 import static christmas.constants.SubTitle.MENUS;
 import static christmas.constants.SubTitle.REGULAR_PRICE;
 import static christmas.constants.SubTitle.TOTAL_BENEFITS;
+import static christmas.constants.SystemConstant.EVENT_MONTH;
 import static christmas.constants.SystemMessage.INIT_DETAILS;
 import static christmas.constants.SystemMessage.INIT_PLANNER;
 import static christmas.constants.SystemMessage.NOTHING;
@@ -15,6 +16,7 @@ import static christmas.data.EventBadge.DECEMBER_EVENT_BADGE_CONDITION;
 
 import christmas.domain.BenefitsManager;
 import christmas.domain.Kiosk;
+import java.time.LocalDate;
 import java.util.List;
 
 public class OutputView {
@@ -27,8 +29,8 @@ public class OutputView {
         System.out.println(message.getMessage());
     }
 
-    public void printDetailsBeforeBenefits(Kiosk kiosk) {
-        System.out.println(INIT_DETAILS);
+    public void printDetailsBeforeBenefits(Kiosk kiosk, LocalDate date) {
+        System.out.printf(INIT_DETAILS.toString(), EVENT_MONTH.getValue(), date.getDayOfMonth());
         printMenus(kiosk);
         printRegularPrice(kiosk);
     }
