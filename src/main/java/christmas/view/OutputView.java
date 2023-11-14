@@ -1,6 +1,7 @@
 package christmas.view;
 
 import static christmas.constants.SubTitle.BENEFIT_DETAILS;
+import static christmas.constants.SubTitle.DECEMBER_EVENT_BADGE;
 import static christmas.constants.SubTitle.FINAL_PRICE;
 import static christmas.constants.SubTitle.FREE_GIFT;
 import static christmas.constants.SubTitle.MENUS;
@@ -11,6 +12,7 @@ import static christmas.constants.SystemMessage.INIT_PLANNER;
 import static christmas.constants.SystemMessage.NOTHING;
 import static christmas.constants.SystemString.BENEFIT_PRICE_FORMAT;
 import static christmas.constants.SystemString.PRICE_FORMAT;
+import static christmas.data.EventBadge.DECEMBER_EVENT_BADGE_CONDITION;
 
 import christmas.domain.BenefitsManager;
 import christmas.domain.Kiosk;
@@ -49,6 +51,7 @@ public class OutputView {
         printBenefitDetails(benefitsManager);
         printTotalBenefits(benefitsManager);
         printFinalPrice(benefitsManager, kiosk);
+        printDecemberEventBadge(benefitsManager);
     }
 
     private void printFreeGift(BenefitsManager benefitsManager) {
@@ -74,5 +77,10 @@ public class OutputView {
         System.out.println(FINAL_PRICE);
         System.out.printf(PRICE_FORMAT.toString(),
                 kiosk.calculateRegularPrice() - benefitsManager.calculateTotlaDiscounts());
+    }
+
+    private void printDecemberEventBadge(BenefitsManager benefitsManager) {
+        System.out.println(DECEMBER_EVENT_BADGE);
+        System.out.println(DECEMBER_EVENT_BADGE_CONDITION.getFreeGift(benefitsManager.calculateTotalBenefits()));
     }
 }
