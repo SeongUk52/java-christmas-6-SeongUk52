@@ -37,6 +37,10 @@ public class Dishes {
                 .reduce(BASE_PRICE.getValue(), Integer::sum);
     }
 
+    public boolean isEmpty() {
+        return dishes.isEmpty();
+    }
+
     public Stream<Dish> stream() {
         return dishes.stream();
     }

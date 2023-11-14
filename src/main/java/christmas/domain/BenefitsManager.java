@@ -8,14 +8,16 @@ import christmas.data.FreeGiftData;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 public class BenefitsManager {
     private final List<Discount> discounts;
-    private final List<Dish> freeGifts;
+    private final Dishes freeGifts;
     //TODO 2023-11-14 03:05 불변 리스트로 전환
 
-    private BenefitsManager(List<Discount> discounts, List<Dish> freeGifts) {
+    private BenefitsManager(List<Discount> discounts, Dishes freeGifts) {
         this.discounts = discounts;
         this.freeGifts = freeGifts;
     }
@@ -24,16 +26,23 @@ public class BenefitsManager {
         return new BenefitsManager(calculateDiscounts(date, dishes), createFreeGifts(dishes.calculateRegularPrice()));
     }
 
+    public static BenefitsManager createNoBenefits() {
+        return new BenefitsManager(List.of(Discount.createEmpty()), null);
+    }
+
     private static List<Discount> calculateDiscounts(LocalDate date, Dishes dishes) {
         return Arrays.stream(DiscountData.values())
                 .map(i -> Discount.of(i, date, dishes))
+                .filter(i -> i.getDicountAmount() > 0)
                 .toList();
     }
 
-    private static List<Dish> createFreeGifts(int regularPrice) {
-        return Arrays.stream(FreeGiftData.values())
+    private static Dishes createFreeGifts(int regularPrice) {
+        return Dishes.from(Arrays
+                .stream(FreeGiftData.values())
                 .map(i -> i.getFreeGift(regularPrice))
-                .toList();
+                .filter(Objects::nonNull)
+                .toList());
     }
 
     public int calculateTotalBenefits() {
@@ -52,10 +61,13 @@ public class BenefitsManager {
                 .reduce(0, Integer::sum);
     }
 
-    public List<String> freeGiftToString() {
-        return freeGifts.stream()
+    public Optional<List<String>> freeGiftToStringListOptional() {
+        if (freeGifts.isEmpty()) {
+            return Optional.empty();
+        }
+        return Optional.of(freeGifts.stream()
                 .map(Dish::toMessage)
-                .toList();
+                .toList());
     }
 
     public List<String> toStrings() {

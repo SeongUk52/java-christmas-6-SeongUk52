@@ -22,6 +22,10 @@ public class Discount {
         return new Discount(discountType, discountType.calculateDiscountAmount(date));
     }
 
+    public static Discount createEmpty() {
+        return new Discount(null, 0);
+    }
+
     public String toMessage() {
         if (dicountAmount == 0) {
             return null;

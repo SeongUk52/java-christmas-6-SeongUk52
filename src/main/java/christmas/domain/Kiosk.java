@@ -51,4 +51,8 @@ public class Kiosk {
     public int calculateRegularPrice() {
         return dishes.calculateRegularPrice();
     }
+
+    public Dishes toDishes() {
+        return dishes;
+    }
 }

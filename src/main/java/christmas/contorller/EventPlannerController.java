@@ -1,5 +1,6 @@
 package christmas.contorller;
 
+import christmas.domain.BenefitsManager;
 import christmas.domain.Kiosk;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -20,6 +21,9 @@ public class EventPlannerController {
         LocalDate localDate = inputWhileValid(inputView::readDate);
         Kiosk kiosk = inputWhileValid(() -> Kiosk.from((inputView.readDishes())));
         outputView.printDetailsBeforeBenefits(kiosk);
+        BenefitsManager benefitsManager = BenefitsManager.of(localDate, kiosk.toDishes());
+
+        outputView.printDatailsAfterBenefits(benefitsManager);
     }
 
     private <T> T inputWhileValid(Supplier<T> supplier) {
