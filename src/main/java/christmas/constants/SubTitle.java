@@ -1,5 +1,6 @@
 package christmas.constants;
 
+import static christmas.constants.SystemConstant.EVENT_MONTH;
 import static christmas.constants.SystemString.SUB_TITLE_FORMAT;
 
 public enum SubTitle {
@@ -9,7 +10,7 @@ public enum SubTitle {
     BENEFIT_DETAILS("혜택 내역"),
     TOTAL_BENEFITS("총혜택 금액"),
     FINAL_PRICE("할인 후 예상 결제 금액"),
-    DECEMBER_EVENT_BADGE("12월 이벤트 배지");
+    DECEMBER_EVENT_BADGE(String.format("%d월 이벤트 배지", EVENT_MONTH.getValue()));
 
     private final String title;
 
