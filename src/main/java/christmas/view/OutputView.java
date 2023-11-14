@@ -21,6 +21,7 @@ public class OutputView {
     public void printDetailsBeforeBenefits(Kiosk kiosk) {
         System.out.println(INIT_DETAILS);
         printMenus(kiosk);
+        printRegularPrice(kiosk);
     }
 
     private void printMenus(Kiosk kiosk) {
