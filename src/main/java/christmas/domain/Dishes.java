@@ -48,6 +48,13 @@ public class Dishes {
                 .reduce(0, Integer::sum);
     }
 
+    public int calculateDiscountOf(String categori, int discountAmount) {
+        return dishes.stream()
+                .filter(i -> i.is(categori))
+                .map(i -> i.calculateDiscountFrom(discountAmount))
+                .reduce(0, Integer::sum);
+    }
+
     public boolean isEmpty() {
         return dishes.isEmpty();
     }

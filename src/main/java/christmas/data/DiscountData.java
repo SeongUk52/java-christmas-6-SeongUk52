@@ -47,10 +47,7 @@ public enum DiscountData {
     }
 
     private static int calculateDiscountOf(String categori, Dishes dishes) {
-        return dishes.stream()
-                .filter(i -> i.is(categori))
-                .map(i -> i.calculateDiscountFrom(2_023))
-                .reduce(0, Integer::sum);
+        return dishes.calculateDiscountOf(categori, 2_023);
     }
 
     public int calculateDiscountAmount(LocalDate date, Dishes dishes) {
