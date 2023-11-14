@@ -8,6 +8,7 @@ import static christmas.constants.SystemString.KIOSK_SEPARATOR;
 import christmas.data.EventCautionCondition;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class Kiosk {
     private final Dishes dishes;
@@ -40,10 +41,14 @@ public class Kiosk {
                 .filter(i -> i.isEqualCategory(EVENT_THROW_ILLEGAL_ARGUMENT_EXCEPTION))
                 .anyMatch(i -> i.isCondition(dishes));
     }
-    
-    public List<String> toStringList() {
-        return dishes.stream()
+
+    public Optional<List<String>> toStringList() {
+        return Optional.of(dishes.stream()
                 .map(Dish::toMessage)
-                .toList();
+                .toList());
+    }
+
+    public int calculateRegularPrice() {
+        return dishes.calculateRegularPrice();
     }
 }
