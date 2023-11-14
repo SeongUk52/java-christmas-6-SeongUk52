@@ -47,7 +47,7 @@ public class Kiosk {
     }
 
     public int calculateRegularPrice() {
-        return dishes.calculateRegularPrice();
+        return dishes.calculatePrice();
     }
 
     public Dishes toDishes() {

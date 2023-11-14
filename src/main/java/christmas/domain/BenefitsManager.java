@@ -23,7 +23,7 @@ public class BenefitsManager {
     }
 
     public static BenefitsManager of(LocalDate date, Dishes dishes) {
-        return new BenefitsManager(calculateDiscounts(date, dishes), createFreeGifts(dishes.calculateRegularPrice()));
+        return new BenefitsManager(calculateDiscounts(date, dishes), createFreeGifts(dishes.calculatePrice()));
     }
 
     public static BenefitsManager createNoBenefits() {
@@ -56,9 +56,7 @@ public class BenefitsManager {
     }
 
     private int calculateTotalFreeGift() {
-        return freeGifts.stream()
-                .map(Dish::calculatePrice)
-                .reduce(0, Integer::sum);
+        return freeGifts.calculatePrice();
     }
 
     public Optional<List<String>> freeGiftToStringListOptional() {

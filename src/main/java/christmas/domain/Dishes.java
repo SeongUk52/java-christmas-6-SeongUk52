@@ -36,7 +36,7 @@ public class Dishes {
                 .count() == dishes.size();
     }
 
-    public int calculateRegularPrice() {
+    public int calculatePrice() {
         return dishes.stream()
                 .map(Dish::calculatePrice)
                 .reduce(BASE_PRICE.getValue(), Integer::sum);

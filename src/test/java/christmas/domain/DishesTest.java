@@ -12,7 +12,7 @@ public class DishesTest {
     @Test
     void calculateTotalPriceBeforeBenefits() {
         assertThat(Dishes.from(List.of(Dish.from("타파스-1"), Dish.from("제로콜라-1")))
-                .calculateRegularPrice())
+                .calculatePrice())
                 .isEqualTo(8500);
     }
 }
