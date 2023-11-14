@@ -45,6 +45,12 @@ public class Dishes {
         return dishes.isEmpty();
     }
 
+    public List<String> toMessages() {
+        return dishes.stream()
+                .map(Dish::toMessage)
+                .toList();
+    }
+
     public Stream<Dish> stream() {
         return dishes.stream();
     }

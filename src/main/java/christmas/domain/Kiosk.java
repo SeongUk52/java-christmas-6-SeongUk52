@@ -43,9 +43,7 @@ public class Kiosk {
     }
 
     public Optional<List<String>> toStringList() {
-        return Optional.of(dishes.stream()
-                .map(Dish::toMessage)
-                .toList());
+        return Optional.of(dishes.toMessages());
     }
 
     public int calculateRegularPrice() {
