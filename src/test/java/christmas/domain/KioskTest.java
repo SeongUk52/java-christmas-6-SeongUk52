@@ -36,12 +36,14 @@ public class KioskTest {
     @DisplayName("음료만 주문 시, 주문할 수 없습니다.")
     @Test
     void isExceptionConditionByOnlyDrinks() {
-        assertThat(Kiosk.from("제로콜라-3,샴페인-1").isExceptionCondition()).isTrue();
+        assertThatThrownBy(() -> Kiosk.from("제로콜라-3,샴페인-1"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("메뉴는 한 번에 최대 20개까지만 주문할 수 있습니다.")
     @Test
     void isExceptionConditionByMoreThan20() {
-        assertThat(Kiosk.from("제로콜라-30,시저샐러드-1").isExceptionCondition()).isTrue();
+        assertThatThrownBy(() -> Kiosk.from("제로콜라-30,시저샐러드-1"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

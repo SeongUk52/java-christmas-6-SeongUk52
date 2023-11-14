@@ -2,6 +2,7 @@ package christmas.domain;
 
 import static christmas.constants.CautionCategory.EVENT_DISCOUNT_APPLIED;
 import static christmas.constants.CautionCategory.EVENT_THROW_ILLEGAL_ARGUMENT_EXCEPTION;
+import static christmas.constants.ExceptionMessage.ORDER_EXCEPTION;
 import static christmas.constants.SystemString.KIOSK_SEPARATOR;
 
 import christmas.data.EventCautionCondition;
@@ -13,6 +14,9 @@ public class Kiosk {
 
     private Kiosk(List<Dish> dishes) {
         this.dishes = Dishes.from(dishes);
+        if (isExceptionCondition()) {
+            throw new IllegalArgumentException(ORDER_EXCEPTION.toString());
+        }
     }
 
     public static Kiosk from(String menusAndAmounts) {

@@ -16,7 +16,7 @@ public class EventPlannerController {
     }
 
     public void play() {
-        //안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.
+        outputView.printInitMessage();
         LocalDate localDate = inputWhileValid(inputView::readDate);
         Kiosk kiosk = inputWhileValid(() -> Kiosk.from((inputView.readDishes())));
     }
