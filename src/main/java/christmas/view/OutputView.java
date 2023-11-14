@@ -4,10 +4,12 @@ import static christmas.constants.SubTitle.BENEFIT_DETAILS;
 import static christmas.constants.SubTitle.FREE_GIFT;
 import static christmas.constants.SubTitle.MENUS;
 import static christmas.constants.SubTitle.REGULAR_PRICE;
+import static christmas.constants.SubTitle.TOTAL_BENEFITS;
 import static christmas.constants.SystemMessage.INIT_DETAILS;
 import static christmas.constants.SystemMessage.INIT_PLANNER;
 import static christmas.constants.SystemMessage.NOTHING;
-import static christmas.constants.SystemString.PRICE_FROMAT;
+import static christmas.constants.SystemString.BENEFIT_PRICE_FORMAT;
+import static christmas.constants.SystemString.PRICE_FORMAT;
 
 import christmas.domain.BenefitsManager;
 import christmas.domain.Kiosk;
@@ -38,12 +40,13 @@ public class OutputView {
 
     private void printRegularPrice(Kiosk kiosk) {
         System.out.println(REGULAR_PRICE);
-        System.out.printf(PRICE_FROMAT + "%n", kiosk.calculateRegularPrice());
+        System.out.printf(PRICE_FORMAT.toString(), kiosk.calculateRegularPrice());
     }
 
     public void printDatailsAfterBenefits(BenefitsManager benefitsManager) {
         printFreeGift(benefitsManager);
         printBenefitDetails(benefitsManager);
+        printTotalBenefits(benefitsManager);
     }
 
     private void printFreeGift(BenefitsManager benefitsManager) {
@@ -58,5 +61,10 @@ public class OutputView {
         benefitsManager.toStrings()
                 .orElse(List.of(NOTHING.toString()))
                 .forEach(System.out::println);
+    }
+
+    private void printTotalBenefits(BenefitsManager benefitsManager) {
+        System.out.println(TOTAL_BENEFITS);
+        System.out.printf(BENEFIT_PRICE_FORMAT.toString(), benefitsManager.calculateTotalBenefits());
     }
 }

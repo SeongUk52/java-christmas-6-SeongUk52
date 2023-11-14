@@ -5,7 +5,8 @@ public enum SystemString {
     DISH_SEPARATOR("-"),
     KIOSK_SEPARATOR(","),
     SUB_TITLE_FORMAT("\n<%s>"),
-    PRICE_FROMAT("%,d원");
+    PRICE_FORMAT("%,d원\n"),
+    BENEFIT_PRICE_FORMAT("-%,d원\n");
 
     private final String string;
 
