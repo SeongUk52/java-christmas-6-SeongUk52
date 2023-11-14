@@ -27,7 +27,7 @@ public class BenefitsManager {
     }
 
     public static BenefitsManager createNoBenefits() {
-        return new BenefitsManager(List.of(Discount.createEmpty()), null);
+        return new BenefitsManager(List.of(), Dishes.createEmpty());
     }
 
     private static List<Discount> calculateDiscounts(LocalDate date, Dishes dishes) {

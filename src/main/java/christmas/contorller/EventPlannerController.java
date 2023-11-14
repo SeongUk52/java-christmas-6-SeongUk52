@@ -21,8 +21,10 @@ public class EventPlannerController {
         LocalDate localDate = inputWhileValid(inputView::readDate);
         Kiosk kiosk = inputWhileValid(() -> Kiosk.from((inputView.readDishes())));
         outputView.printDetailsBeforeBenefits(kiosk);
-        BenefitsManager benefitsManager = BenefitsManager.of(localDate, kiosk.toDishes());
-
+        BenefitsManager benefitsManager = BenefitsManager.createNoBenefits();
+        if (kiosk.isApplyDiscount()) {
+            benefitsManager = BenefitsManager.of(localDate, kiosk.toDishes());
+        }
         outputView.printDatailsAfterBenefits(benefitsManager);
     }
 

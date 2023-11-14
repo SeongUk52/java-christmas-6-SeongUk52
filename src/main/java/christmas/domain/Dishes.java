@@ -18,6 +18,10 @@ public class Dishes {
         return new Dishes(dishes);
     }
 
+    public static Dishes createEmpty() {
+        return new Dishes(List.of());
+    }
+
     private void validateDistinct(List<Dish> dishes) {
         if (!isDistinct(dishes)) {
             throw new IllegalArgumentException(ORDER_EXCEPTION.toString());
