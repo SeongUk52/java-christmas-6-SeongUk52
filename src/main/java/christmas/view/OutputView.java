@@ -47,7 +47,7 @@ public class OutputView {
         System.out.printf(PRICE_FORMAT.toString(), kiosk.calculateRegularPrice());
     }
 
-    public void printDatailsAfterBenefits(BenefitsManager benefitsManager, Kiosk kiosk) {
+    public void printDetailsAfterBenefits(BenefitsManager benefitsManager, Kiosk kiosk) {
         printFreeGift(benefitsManager);
         printBenefitDetails(benefitsManager);
         printTotalBenefits(benefitsManager);
