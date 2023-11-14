@@ -6,6 +6,7 @@ import static christmas.constants.SystemMessage.DISH_FORMAT;
 import static christmas.constants.SystemString.DISH_SEPARATOR;
 
 import christmas.data.Menu;
+import christmas.utils.Numeral;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -26,6 +27,7 @@ public class Dish {
     }
 
     private static Dish from(List<String> menuAndAmount) {
+        validateNumral(menuAndAmount.get(1));
         return new Dish(findMenuFrom(menuAndAmount.get(0)), Integer.parseInt(menuAndAmount.get(1)));
     }
 
@@ -35,6 +37,12 @@ public class Dish {
 
     private static void validateMenuFormat(String menuAndAmount) {
         if (!menuAndAmount.contains(DISH_SEPARATOR.toString())) {
+            throw new IllegalArgumentException(ORDER_EXCEPTION.toString());
+        }
+    }
+
+    private static void validateNumral(String amount) {
+        if (!Numeral.isNumeral(amount)) {
             throw new IllegalArgumentException(ORDER_EXCEPTION.toString());
         }
     }

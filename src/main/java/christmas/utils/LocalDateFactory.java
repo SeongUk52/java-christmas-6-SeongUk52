@@ -28,6 +28,6 @@ public class LocalDateFactory {
     }
 
     private static boolean isInRange(int date) {
-        return date > FIRST_OF_DAYS.getValue() && date < END_OF_DAYS.getValue();
+        return date >= FIRST_OF_DAYS.getValue() && date <= END_OF_DAYS.getValue();
     }
 }
