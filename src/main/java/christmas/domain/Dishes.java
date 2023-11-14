@@ -5,7 +5,6 @@ import static christmas.constants.SystemConstant.BASE_PRICE;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class Dishes {
     private final List<Dish> dishes;
@@ -65,7 +64,8 @@ public class Dishes {
                 .toList();
     }
 
-    public Stream<Dish> stream() {
-        return dishes.stream();
+    public boolean isAllMatch(String categori) {
+        return dishes.stream()
+                .allMatch(i -> i.is(categori));
     }
 }
