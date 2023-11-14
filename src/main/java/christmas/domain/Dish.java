@@ -42,7 +42,7 @@ public class Dish {
     }
 
     private static void validateNumral(String amount) {
-        if (!Numeral.isNumeral(amount)) {
+        if (Numeral.notNumeral(amount)) {
             throw new IllegalArgumentException(ORDER_EXCEPTION.toString());
         }
     }

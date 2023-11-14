@@ -23,7 +23,7 @@ public class InputView {
     }
 
     private void validateNumeral(String userInput) {
-        if (!Numeral.isNumeral(userInput)) {
+        if (Numeral.notNumeral(userInput)) {
             throw new IllegalArgumentException(DATE_EXCEPTION.toString());
         }
     }

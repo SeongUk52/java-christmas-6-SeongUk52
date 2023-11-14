@@ -70,13 +70,19 @@ public class OutputView {
 
     private void printTotalBenefits(BenefitsManager benefitsManager) {
         System.out.println(TOTAL_BENEFITS);
-        System.out.printf(BENEFIT_PRICE_FORMAT.toString(), benefitsManager.calculateTotalBenefits());
+        int totalBenfits = benefitsManager.calculateTotalBenefits();
+        if (totalBenfits == 0) {
+            System.out.printf(PRICE_FORMAT.toString(), totalBenfits);
+        }
+        if (totalBenfits != 0) {
+            System.out.printf(BENEFIT_PRICE_FORMAT.toString(), totalBenfits);
+        }
     }
 
     private void printFinalPrice(BenefitsManager benefitsManager, Kiosk kiosk) {
         System.out.println(FINAL_PRICE);
         System.out.printf(PRICE_FORMAT.toString(),
-                kiosk.calculateRegularPrice() - benefitsManager.calculateTotlaDiscounts());
+                kiosk.calculateRegularPrice() - benefitsManager.calculateTotalDiscounts());
     }
 
     private void printDecemberEventBadge(BenefitsManager benefitsManager) {

@@ -8,7 +8,7 @@ public class Numeral {
     private Numeral() {
     }
 
-    public static boolean isNumeral(String s) {
-        return NUMERAL.matcher(s).matches();
+    public static boolean notNumeral(String s) {
+        return !NUMERAL.matcher(s).matches();
     }
 }
