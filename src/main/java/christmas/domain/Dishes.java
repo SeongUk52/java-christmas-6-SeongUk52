@@ -42,6 +42,12 @@ public class Dishes {
                 .reduce(BASE_PRICE.getValue(), Integer::sum);
     }
 
+    public int calculateDishesAmount() {
+        return dishes.stream()
+                .map(Dish::getAmount)
+                .reduce(0, Integer::sum);
+    }
+
     public boolean isEmpty() {
         return dishes.isEmpty();
     }
