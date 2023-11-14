@@ -4,7 +4,7 @@ public enum SystemString {
     ERROR_PREFIX("[ERROR] "),
     DISH_SEPARATOR("-"),
     KIOSK_SEPARATOR(","),
-    SUB_TITLE_FORMAT("\n<s%>");
+    SUB_TITLE_FORMAT("\n<%s>");
 
     private final String string;
 
