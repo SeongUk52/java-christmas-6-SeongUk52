@@ -70,12 +70,19 @@ public class BenefitsManager {
                 .toList());
     }
 
-    public List<String> toStrings() {
-        return Stream.concat(discounts.stream().map(Discount::toMessage), totalFreeGiftToString())
-                .toList();
+    public Optional<List<String>> toStrings() {
+        if (totalFreeGiftToString().isPresent()) {
+            return Optional.of(Stream.concat(discounts.stream().map(Discount::toMessage),
+                            totalFreeGiftToString().orElseThrow())
+                    .toList());
+        }
+        return Optional.empty();
     }
 
-    private Stream<String> totalFreeGiftToString() {
-        return String.format(BENEFIT_FORMAT.toString(), FREE_GIFT, calculateTotalFreeGift()).lines();
+    private Optional<Stream<String>> totalFreeGiftToString() {
+        if (calculateTotalFreeGift() <= 0) {
+            return Optional.empty();
+        }
+        return Optional.of(String.format(BENEFIT_FORMAT.toString(), FREE_GIFT, calculateTotalFreeGift()).lines());
     }
 }

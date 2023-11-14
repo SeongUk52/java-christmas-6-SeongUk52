@@ -1,5 +1,6 @@
 package christmas.view;
 
+import static christmas.constants.SubTitle.BENEFIT_DETAILS;
 import static christmas.constants.SubTitle.FREE_GIFT;
 import static christmas.constants.SubTitle.MENUS;
 import static christmas.constants.SubTitle.REGULAR_PRICE;
@@ -42,11 +43,19 @@ public class OutputView {
 
     public void printDatailsAfterBenefits(BenefitsManager benefitsManager) {
         printFreeGift(benefitsManager);
+        printBenefitDetails(benefitsManager);
     }
 
     private void printFreeGift(BenefitsManager benefitsManager) {
         System.out.println(FREE_GIFT);
         benefitsManager.freeGiftToStringListOptional()
+                .orElse(List.of(NOTHING.toString()))
+                .forEach(System.out::println);
+    }
+
+    private void printBenefitDetails(BenefitsManager benefitsManager) {
+        System.out.println(BENEFIT_DETAILS);
+        benefitsManager.toStrings()
                 .orElse(List.of(NOTHING.toString()))
                 .forEach(System.out::println);
     }
