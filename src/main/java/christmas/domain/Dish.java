@@ -7,8 +7,6 @@ import static christmas.constants.SystemString.DISH_SEPARATOR;
 
 import christmas.data.Menu;
 import christmas.utils.Numeral;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 
 public class Dish {
@@ -23,12 +21,13 @@ public class Dish {
 
     public static Dish from(String menuAndAmount) {
         validateMenuFormat(menuAndAmount);
-        return Dish.from(Arrays.stream(menuAndAmount.split(DISH_SEPARATOR.toString())).toList());
+        String[] splitedInput = menuAndAmount.split(DISH_SEPARATOR.toString());
+        return Dish.from(splitedInput[0], splitedInput[1]);
     }
 
-    private static Dish from(List<String> menuAndAmount) {
-        validateNumral(menuAndAmount.get(1));
-        return new Dish(findMenuFrom(menuAndAmount.get(0)), Integer.parseInt(menuAndAmount.get(1)));
+    private static Dish from(String menu, String amount) {
+        validateNumral(amount);
+        return new Dish(findMenuFrom(menu), Integer.parseInt(amount));
     }
 
     private static Menu findMenuFrom(String menu) {
