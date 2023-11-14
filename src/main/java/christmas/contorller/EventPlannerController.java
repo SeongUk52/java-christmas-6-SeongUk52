@@ -19,6 +19,7 @@ public class EventPlannerController {
         outputView.printInitMessage();
         LocalDate localDate = inputWhileValid(inputView::readDate);
         Kiosk kiosk = inputWhileValid(() -> Kiosk.from((inputView.readDishes())));
+        outputView.printDetailsBeforeBenefits(kiosk);
     }
 
     private <T> T inputWhileValid(Supplier<T> supplier) {

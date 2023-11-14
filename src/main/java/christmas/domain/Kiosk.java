@@ -40,4 +40,10 @@ public class Kiosk {
                 .filter(i -> i.isEqualCategory(EVENT_THROW_ILLEGAL_ARGUMENT_EXCEPTION))
                 .anyMatch(i -> i.isCondition(dishes));
     }
+    
+    public List<String> toStringList() {
+        return dishes.stream()
+                .map(Dish::toMessage)
+                .toList();
+    }
 }
