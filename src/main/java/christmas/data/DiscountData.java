@@ -3,7 +3,6 @@ package christmas.data;
 import static java.time.DayOfWeek.FRIDAY;
 import static java.time.DayOfWeek.SATURDAY;
 
-import christmas.domain.Dish;
 import christmas.domain.Dishes;
 import java.time.LocalDate;
 import java.util.List;
@@ -50,8 +49,8 @@ public enum DiscountData {
     private static int calculateDiscountOf(String categori, Dishes dishes) {
         return dishes.stream()
                 .filter(i -> i.is(categori))
-                .map(Dish::getAmount)
-                .reduce(0, Integer::sum) * 2_023;
+                .map(i -> i.calculateDiscountFrom(2_023))
+                .reduce(0, Integer::sum);
     }
 
     public int calculateDiscountAmount(LocalDate date, Dishes dishes) {

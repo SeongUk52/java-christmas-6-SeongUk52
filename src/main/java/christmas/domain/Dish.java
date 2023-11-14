@@ -57,6 +57,10 @@ public class Dish {
         return menu.getPrice() * amount;
     }
 
+    public int calculateDiscountFrom(int discountPrice) {
+        return amount * discountPrice;
+    }
+
     public boolean is(String categori) {
         return Objects.equals(menu.getCategory(), categori);
     }
