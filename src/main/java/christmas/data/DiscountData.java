@@ -29,7 +29,7 @@ public enum DiscountData {
         return 0;
     }),
     SPECIAL_DISCOUNT("특별 할인", (date, dishes) -> {
-        if (List.of(3, 10, 17, 24, 31).contains(date.getDayOfMonth())) {
+        if (List.of(3, 10, 17, 24, 25, 31).contains(date.getDayOfMonth())) {
             return 1_000;
         }
         return 0;
