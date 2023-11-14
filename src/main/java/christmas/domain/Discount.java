@@ -29,6 +29,10 @@ public class Discount {
         return String.format(BENEFIT_FORMAT.toString(), discountType.toString(), dicountAmount);
     }
 
+    public boolean isPresent() {
+        return dicountAmount >= 0;
+    }
+
     @Override
     public String toString() {
         return discountType.toString();

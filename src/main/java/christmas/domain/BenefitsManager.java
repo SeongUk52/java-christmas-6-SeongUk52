@@ -33,7 +33,7 @@ public class BenefitsManager {
     private static List<Discount> calculateDiscounts(LocalDate date, Dishes dishes) {
         return Arrays.stream(DiscountData.values())
                 .map(i -> Discount.of(i, date, dishes))
-                .filter(i -> i.getDicountAmount() > 0)
+                .filter(Discount::isPresent)
                 .toList();
     }
 
