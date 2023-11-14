@@ -3,6 +3,7 @@ package christmas.domain;
 import static christmas.constants.ExceptionMessage.ORDER_EXCEPTION;
 import static christmas.constants.SystemConstant.BASE_PRICE;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -11,7 +12,7 @@ public class Dishes {
 
     private Dishes(List<Dish> dishes) {
         validateDistinct(dishes);
-        this.dishes = dishes;
+        this.dishes = Collections.unmodifiableList(dishes);
     }
 
     public static Dishes from(List<Dish> dishes) {

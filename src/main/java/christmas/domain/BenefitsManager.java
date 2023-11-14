@@ -7,6 +7,7 @@ import christmas.data.DiscountData;
 import christmas.data.FreeGiftData;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,10 +16,9 @@ import java.util.stream.Stream;
 public class BenefitsManager {
     private final List<Discount> discounts;
     private final Dishes freeGifts;
-    //TODO 2023-11-14 03:05 불변 리스트로 전환
 
     private BenefitsManager(List<Discount> discounts, Dishes freeGifts) {
-        this.discounts = discounts;
+        this.discounts = Collections.unmodifiableList(discounts);
         this.freeGifts = freeGifts;
     }
 
