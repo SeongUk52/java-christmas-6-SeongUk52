@@ -25,7 +25,7 @@ public class EventPlannerController {
         if (kiosk.isApplyDiscount()) {
             benefitsManager = BenefitsManager.of(localDate, kiosk.toDishes());
         }
-        outputView.printDatailsAfterBenefits(benefitsManager);
+        outputView.printDatailsAfterBenefits(benefitsManager, kiosk);
     }
 
     private <T> T inputWhileValid(Supplier<T> supplier) {

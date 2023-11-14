@@ -1,6 +1,7 @@
 package christmas.view;
 
 import static christmas.constants.SubTitle.BENEFIT_DETAILS;
+import static christmas.constants.SubTitle.FINAL_PRICE;
 import static christmas.constants.SubTitle.FREE_GIFT;
 import static christmas.constants.SubTitle.MENUS;
 import static christmas.constants.SubTitle.REGULAR_PRICE;
@@ -43,10 +44,11 @@ public class OutputView {
         System.out.printf(PRICE_FORMAT.toString(), kiosk.calculateRegularPrice());
     }
 
-    public void printDatailsAfterBenefits(BenefitsManager benefitsManager) {
+    public void printDatailsAfterBenefits(BenefitsManager benefitsManager, Kiosk kiosk) {
         printFreeGift(benefitsManager);
         printBenefitDetails(benefitsManager);
         printTotalBenefits(benefitsManager);
+        printFinalPrice(benefitsManager, kiosk);
     }
 
     private void printFreeGift(BenefitsManager benefitsManager) {
@@ -66,5 +68,11 @@ public class OutputView {
     private void printTotalBenefits(BenefitsManager benefitsManager) {
         System.out.println(TOTAL_BENEFITS);
         System.out.printf(BENEFIT_PRICE_FORMAT.toString(), benefitsManager.calculateTotalBenefits());
+    }
+
+    private void printFinalPrice(BenefitsManager benefitsManager, Kiosk kiosk) {
+        System.out.println(FINAL_PRICE);
+        System.out.printf(PRICE_FORMAT.toString(),
+                kiosk.calculateRegularPrice() - benefitsManager.calculateTotlaDiscounts());
     }
 }

@@ -49,7 +49,7 @@ public class BenefitsManager {
         return calculateTotlaDiscounts() + calculateTotalFreeGift();
     }
 
-    private int calculateTotlaDiscounts() {
+    public int calculateTotlaDiscounts() {
         return discounts.stream()
                 .map(Discount::getDicountAmount)
                 .reduce(0, Integer::sum);
