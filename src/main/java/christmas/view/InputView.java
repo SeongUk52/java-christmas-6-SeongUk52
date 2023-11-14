@@ -1,6 +1,7 @@
 package christmas.view;
 
 import static christmas.constants.ExceptionMessage.DATE_EXCEPTION;
+import static christmas.constants.SystemMessage.INPUT_DISHES;
 import static christmas.constants.SystemMessage.INPUT_VISIT_DATE;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -14,6 +15,11 @@ public class InputView {
         String userInput = Console.readLine();
         validateNumeral(userInput);
         return LocalDateFactory.createLocalDateFrom(userInput);
+    }
+
+    public String readDishes() {
+        System.out.println(INPUT_DISHES);
+        return Console.readLine();
     }
 
     private void validateNumeral(String userInput) {
