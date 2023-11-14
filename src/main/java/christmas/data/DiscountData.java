@@ -17,13 +17,13 @@ public enum DiscountData {
     }),
     WEEKDAY("평일 할인", (date, dishes) -> {
         if (!isWeekEnd(date)) {
-            return calculateDiscountOf("디저트", dishes);
+            return calculateDiscountOf("디저트", dishes, 2_023);
         }
         return 0;
     }),
     WEEKEND("주말 할인", (date, dishes) -> {
         if (isWeekEnd(date)) {
-            return calculateDiscountOf("메인", dishes);
+            return calculateDiscountOf("메인", dishes, 2_023);
         }
         return 0;
     }),
@@ -46,8 +46,8 @@ public enum DiscountData {
         return List.of(FRIDAY, SATURDAY).contains(date.getDayOfWeek());
     }
 
-    private static int calculateDiscountOf(String categori, Dishes dishes) {
-        return dishes.calculateDiscountOf(categori, 2_023);
+    private static int calculateDiscountOf(String categori, Dishes dishes, int discountAmount) {
+        return dishes.calculateDiscountOf(categori, discountAmount);
     }
 
     public int calculateDiscountAmount(LocalDate date, Dishes dishes) {
