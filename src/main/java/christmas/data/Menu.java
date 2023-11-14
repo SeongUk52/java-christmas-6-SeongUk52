@@ -1,6 +1,6 @@
 package christmas.data;
 
-import static christmas.constants.ExceptionMessage.ORDER;
+import static christmas.constants.ExceptionMessage.ORDER_EXCEPTION;
 
 import java.util.Arrays;
 
@@ -32,7 +32,7 @@ public enum Menu {
         return Arrays.stream(Menu.values())
                 .filter(category -> category.isEqual(name))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException(ORDER.toString()));
+                .orElseThrow(() -> new IllegalArgumentException(ORDER_EXCEPTION.toString()));
     }
 
     private boolean isEqual(String name) {

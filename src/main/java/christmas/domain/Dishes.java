@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import static christmas.constants.ExceptionMessage.ORDER;
+import static christmas.constants.ExceptionMessage.ORDER_EXCEPTION;
 import static christmas.constants.SystemConstant.BASE_PRICE;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public class Dishes {
 
     private void validateDistinct(List<Dish> dishes) {
         if (!isDistinct(dishes)) {
-            throw new IllegalArgumentException(ORDER.toString());
+            throw new IllegalArgumentException(ORDER_EXCEPTION.toString());
         }
     }
 

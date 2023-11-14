@@ -1,6 +1,6 @@
 package christmas.utils;
 
-import static christmas.constants.ExceptionMessage.DATE;
+import static christmas.constants.ExceptionMessage.DATE_EXCEPTION;
 import static christmas.constants.SystemConstant.END_OF_DAYS;
 import static christmas.constants.SystemConstant.EVENT_MONTH;
 import static christmas.constants.SystemConstant.EVENT_YEAR;
@@ -23,7 +23,7 @@ public class LocalDateFactory {
 
     private static void validateRange(int date) {
         if (!isInRange(date)) {
-            throw new IllegalArgumentException(DATE.toString());
+            throw new IllegalArgumentException(DATE_EXCEPTION.toString());
         }
     }
 
