@@ -8,7 +8,7 @@ public enum Menu {
     MUSHROOM_SOUP("양송이수프", 6_000, "에피타이저"),
     TAPAS_DISH("타파스", 5_500, "에피타이저"),
     CAESAR_SALAD("시저샐러드", 8_000, "에피타이저"),
-    TBONE_STEAK("티본스테이크", 55_000, "메인"),
+    T_BONE_STEAK("티본스테이크", 55_000, "메인"),
     BBQ_RIBS("바비큐립", 54_000, "메인"),
     SEAFOOD_PASTA("해산물파스타", 35_000, "메인"),
     CHRISTMAS_PASTA("크리스마스파스타", 25_000, "메인"),

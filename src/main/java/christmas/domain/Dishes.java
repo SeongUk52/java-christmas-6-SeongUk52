@@ -50,9 +50,9 @@ public class Dishes {
                 .reduce(BASIC_INIT_NUMBER.getValue(), Integer::sum);
     }
 
-    public int calculateDiscountOf(String categori, int discountAmount) {
+    public int calculateDiscountOf(String category, int discountAmount) {
         return dishes.stream()
-                .filter(i -> i.is(categori))
+                .filter(i -> i.is(category))
                 .map(i -> i.calculateDiscountFrom(discountAmount))
                 .reduce(BASIC_INIT_NUMBER.getValue(), Integer::sum);
     }
