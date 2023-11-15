@@ -45,8 +45,8 @@ public class Kiosk {
                 .anyMatch(i -> i.isCondition(dishes));
     }
 
-    public Optional<List<String>> toStringList() {
-        return Optional.of(dishes.toMessages());
+    public Optional<List<String>> toOptionalStringList() {
+        return Optional.of(dishes.toMessageList());
     }
 
     public int calculateRegularPrice() {

@@ -37,7 +37,7 @@ public class OutputView {
 
     private void printMenus(Kiosk kiosk) {
         System.out.println(MENUS);
-        kiosk.toStringList()
+        kiosk.toOptionalStringList()
                 .orElseThrow()
                 .forEach(System.out::println);
     }
@@ -57,14 +57,14 @@ public class OutputView {
 
     private void printFreeGift(BenefitsManager benefitsManager) {
         System.out.println(FREE_GIFT);
-        benefitsManager.freeGiftToStringListOptional()
+        benefitsManager.freeGiftToOptionalStringList()
                 .orElse(List.of(NOTHING.toString()))
                 .forEach(System.out::println);
     }
 
     private void printBenefitDetails(BenefitsManager benefitsManager) {
         System.out.println(BENEFIT_DETAILS);
-        benefitsManager.toStrings()
+        benefitsManager.toOptionalStringList()
                 .orElse(List.of(NOTHING.toString()))
                 .forEach(System.out::println);
     }

@@ -59,24 +59,24 @@ public class BenefitsManager {
         return freeGifts.calculatePrice();
     }
 
-    public Optional<List<String>> freeGiftToStringListOptional() {
+    public Optional<List<String>> freeGiftToOptionalStringList() {
         if (freeGifts.isEmpty()) {
             return Optional.empty();
         }
 
-        return Optional.of(freeGifts.toMessages());
+        return Optional.of(freeGifts.toMessageList());
     }
 
-    public Optional<List<String>> toStrings() {
-        if (totalFreeGiftToString().isPresent()) {
+    public Optional<List<String>> toOptionalStringList() {
+        if (totalFreeGiftToOptionalStringStream().isPresent()) {
             return Optional.of(Stream.concat(discounts.stream().map(Discount::toMessage),
-                    totalFreeGiftToString().get()).toList());
+                    totalFreeGiftToOptionalStringStream().get()).toList());
         }
 
         return Optional.empty();
     }
 
-    private Optional<Stream<String>> totalFreeGiftToString() {
+    private Optional<Stream<String>> totalFreeGiftToOptionalStringStream() {
         if (calculateTotalFreeGift() <= BASIC_INIT_NUMBER.getValue()) {
             return Optional.empty();
         }

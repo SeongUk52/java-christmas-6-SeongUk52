@@ -61,7 +61,7 @@ public class Dishes {
         return dishes.isEmpty();
     }
 
-    public List<String> toMessages() {
+    public List<String> toMessageList() {
         return dishes.stream()
                 .map(Dish::toMessage)
                 .toList();
