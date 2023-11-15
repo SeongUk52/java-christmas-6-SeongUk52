@@ -59,8 +59,8 @@ public class Dish {
         return amount * discountPrice;
     }
 
-    public boolean is(String categori) {
-        return menu.isEqualCategoryFrom(categori);
+    public boolean is(String category) {
+        return menu.isEqualCategoryFrom(category);
     }
 
     public String toMessage() {
