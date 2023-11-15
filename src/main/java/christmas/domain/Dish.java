@@ -35,21 +35,21 @@ public class Dish {
     }
 
     private static void validateMenuFormat(String menuAndAmount) {
-        if (!menuAndAmount.contains(DISH_SEPARATOR.toString())) {
-            throw new IllegalArgumentException(ORDER_EXCEPTION.toString());
-        }
+        throwIllegalArgumentExceptionIf(!menuAndAmount.contains(DISH_SEPARATOR.toString()));
     }
 
     private static void validateNumral(String amount) {
-        if (Numeral.notNumeral(amount)) {
+        throwIllegalArgumentExceptionIf(Numeral.notNumeral(amount));
+    }
+
+    private static void throwIllegalArgumentExceptionIf(boolean throwCondition) {
+        if (throwCondition) {
             throw new IllegalArgumentException(ORDER_EXCEPTION.toString());
         }
     }
 
     private void validateAmountRange(int amount) {
-        if (amount < MIN_ORDER_QUANTITY.getValue()) {
-            throw new IllegalArgumentException(ORDER_EXCEPTION.toString());
-        }
+        throwIllegalArgumentExceptionIf(amount < MIN_ORDER_QUANTITY.getValue());
     }
 
     public int calculatePrice() {
