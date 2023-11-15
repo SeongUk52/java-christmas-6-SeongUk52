@@ -22,10 +22,10 @@ public class Kiosk {
     }
 
     public static Kiosk from(String menusAndAmounts) {
-        return new Kiosk(createDishs(menusAndAmounts));
+        return new Kiosk(createDishes(menusAndAmounts));
     }
 
-    private static List<Dish> createDishs(String menusAndAmounts) {
+    private static List<Dish> createDishes(String menusAndAmounts) {
         return Arrays.stream(menusAndAmounts.split(KIOSK_SEPARATOR.toString()))
                 .map(Dish::from)
                 .toList();
