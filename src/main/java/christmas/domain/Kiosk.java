@@ -32,14 +32,14 @@ public class Kiosk {
     }
 
     public boolean isApplyDiscount() {
-        return matchCondition(EVENT_DISCOUNT_APPLIED);
+        return isMatchCondition(EVENT_DISCOUNT_APPLIED);
     }
 
     public boolean isExceptionCondition() {
-        return matchCondition(EVENT_THROW_ILLEGAL_ARGUMENT_EXCEPTION);
+        return isMatchCondition(EVENT_THROW_ILLEGAL_ARGUMENT_EXCEPTION);
     }
 
-    private boolean matchCondition(CautionCategory category) {
+    private boolean isMatchCondition(CautionCategory category) {
         return Arrays.stream((EventCautionCondition.values()))
                 .filter(i -> i.isEqualCategory(category))
                 .anyMatch(i -> i.isCondition(dishes));
