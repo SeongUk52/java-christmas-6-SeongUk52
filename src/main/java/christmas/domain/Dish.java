@@ -22,10 +22,10 @@ public class Dish {
     public static Dish from(String menuAndAmount) {
         validateMenuFormat(menuAndAmount);
         String[] splitedInput = menuAndAmount.split(DISH_SEPARATOR.toString());
-        return Dish.from(splitedInput[0], splitedInput[1]);
+        return Dish.of(splitedInput[0], splitedInput[1]);
     }
 
-    private static Dish from(String menu, String amount) {
+    private static Dish of(String menu, String amount) {
         validateNumral(amount);
         return new Dish(findMenuFrom(menu), Integer.parseInt(amount));
     }
