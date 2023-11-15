@@ -26,6 +26,14 @@ public class DishTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("메뉴판에 없는 메뉴를 입력할 경우 예외처리하는지 테스트")
+    @ValueSource(strings = {"돼지국밥-3", "마라탕-1", "공기밥-3"})
+    @ParameterizedTest
+    void createDishByNonMenu(String input) {
+        assertThatThrownBy(() -> Dish.from(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("주문 금액을 계산하는 기능 테스트")
     @Test
     void calculatePrice() {
