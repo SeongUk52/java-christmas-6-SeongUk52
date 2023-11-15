@@ -23,6 +23,6 @@ public class EventBadgeTest {
     @MethodSource("provideIntegerForEventBadge")
     @DisplayName("조건별 12월 이벤트 배지")
     void getEventBadgeShouldReturnString(int input, String expected) {
-        assertEquals(expected, EventBadge.DECEMBER_EVENT_BADGE_CONDITION.getFreeGift(input));
+        assertEquals(expected, EventBadge.DECEMBER_EVENT_BADGE_CONDITION.applyEventBadge(input));
     }
 }

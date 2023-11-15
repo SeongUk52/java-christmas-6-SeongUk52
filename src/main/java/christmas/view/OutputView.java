@@ -82,6 +82,6 @@ public class OutputView {
 
     private void printDecemberEventBadge(BenefitsManager benefitsManager) {
         System.out.println(DECEMBER_EVENT_BADGE);
-        System.out.println(DECEMBER_EVENT_BADGE_CONDITION.getFreeGift(benefitsManager.calculateTotalBenefits()));
+        System.out.println(DECEMBER_EVENT_BADGE_CONDITION.applyEventBadge(benefitsManager.calculateTotalBenefits()));
     }
 }

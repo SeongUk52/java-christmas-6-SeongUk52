@@ -24,7 +24,7 @@ public enum EventBadge {
         this.condition = condition;
     }
 
-    public String getFreeGift(int totalBenefits) {
+    public String applyEventBadge(int totalBenefits) {
         return condition.apply(totalBenefits);
     }
 }
