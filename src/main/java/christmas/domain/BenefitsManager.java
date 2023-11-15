@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import static christmas.constants.SystemConstant.BASIC_INIT_NUMBER;
 import static christmas.constants.SystemMessage.BENEFIT_FORMAT;
 import static christmas.constants.SystemMessage.FREE_GIFT;
 
@@ -38,8 +39,7 @@ public class BenefitsManager {
     }
 
     private static Dishes createFreeGifts(int regularPrice) {
-        return Dishes.from(Arrays
-                .stream(FreeGiftData.values())
+        return Dishes.from(Arrays.stream(FreeGiftData.values())
                 .map(i -> i.applyFreeGiftFrom(regularPrice))
                 .filter(Objects::nonNull)
                 .toList());
@@ -52,7 +52,7 @@ public class BenefitsManager {
     public int calculateTotalDiscounts() {
         return discounts.stream()
                 .map(Discount::getDiscountAmount)
-                .reduce(0, Integer::sum);
+                .reduce(BASIC_INIT_NUMBER.getValue(), Integer::sum);
     }
 
     private int calculateTotalFreeGift() {
@@ -68,15 +68,16 @@ public class BenefitsManager {
 
     public Optional<List<String>> toStrings() {
         if (totalFreeGiftToString().isPresent()) {
-            return Optional.of(Stream.concat(discounts.stream().map(Discount::toMessage),
-                            totalFreeGiftToString().orElseThrow())
+            return Optional.of(Stream.concat(discounts.stream()
+                                    .map(Discount::toMessage),
+                            totalFreeGiftToString().get())
                     .toList());
         }
         return Optional.empty();
     }
 
     private Optional<Stream<String>> totalFreeGiftToString() {
-        if (calculateTotalFreeGift() <= 0) {
+        if (calculateTotalFreeGift() <= BASIC_INIT_NUMBER.getValue()) {
             return Optional.empty();
         }
         return Optional.of(String.format(BENEFIT_FORMAT.toString(), FREE_GIFT, calculateTotalFreeGift()).lines());
