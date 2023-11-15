@@ -25,6 +25,6 @@ public enum EventCautionCondition {
     }
 
     public boolean isEqualCategory(CautionCategory category) {
-        return this.category.name().equals(category.name());
+        return this.category.equals(category);
     }
 }
