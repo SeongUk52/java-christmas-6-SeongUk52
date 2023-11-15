@@ -63,6 +63,7 @@ public class BenefitsManager {
         if (freeGifts.isEmpty()) {
             return Optional.empty();
         }
+
         return Optional.of(freeGifts.toMessages());
     }
 
@@ -71,6 +72,7 @@ public class BenefitsManager {
             return Optional.of(Stream.concat(discounts.stream().map(Discount::toMessage),
                     totalFreeGiftToString().get()).toList());
         }
+
         return Optional.empty();
     }
 
@@ -78,6 +80,7 @@ public class BenefitsManager {
         if (calculateTotalFreeGift() <= BASIC_INIT_NUMBER.getValue()) {
             return Optional.empty();
         }
+
         return Optional.of(String.format(BENEFIT_FORMAT.toString(), FREE_GIFT, calculateTotalFreeGift()).lines());
     }
 }

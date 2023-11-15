@@ -27,6 +27,7 @@ public class Discount {
         if (discountAmount == BASIC_INIT_NUMBER.getValue()) {
             return null;
         }
+        
         return String.format(BENEFIT_FORMAT.toString(), discountType.toString(), discountAmount);
     }
 

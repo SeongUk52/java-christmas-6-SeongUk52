@@ -9,12 +9,15 @@ public enum EventBadge {
         if (regularPrice >= 20_000) {
             return "산타";
         }
+
         if (regularPrice >= 10_000) {
             return "트리";
         }
+
         if (regularPrice >= 5_000) {
             return "별";
         }
+
         return NOTHING.toString();
     });
 

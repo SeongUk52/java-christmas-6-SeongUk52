@@ -13,24 +13,28 @@ public enum DiscountData {
         if (date.getDayOfMonth() <= 25) {
             return 900 + 100 * date.getDayOfMonth();
         }
+
         return 0;
     }),
     WEEKDAY("평일 할인", (date, dishes) -> {
         if (!isWeekEnd(date)) {
             return calculateDiscountOf("디저트", dishes, 2_023);
         }
+
         return 0;
     }),
     WEEKEND("주말 할인", (date, dishes) -> {
         if (isWeekEnd(date)) {
             return calculateDiscountOf("메인", dishes, 2_023);
         }
+
         return 0;
     }),
     SPECIAL_DISCOUNT("특별 할인", (date, dishes) -> {
         if (List.of(3, 10, 17, 24, 25, 31).contains(date.getDayOfMonth())) {
             return 1_000;
         }
+
         return 0;
     });
 

@@ -8,6 +8,7 @@ public enum FreeGiftData {
         if (regularPrice >= 120_000) {
             return Dish.from("샴페인-1");
         }
+
         return null;
     });
 
