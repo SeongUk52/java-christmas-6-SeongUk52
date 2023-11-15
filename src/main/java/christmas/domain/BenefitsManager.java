@@ -51,7 +51,7 @@ public class BenefitsManager {
 
     public int calculateTotalDiscounts() {
         return discounts.stream()
-                .map(Discount::getDicountAmount)
+                .map(Discount::getDiscountAmount)
                 .reduce(0, Integer::sum);
     }
 
