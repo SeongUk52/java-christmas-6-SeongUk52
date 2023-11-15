@@ -1,10 +1,11 @@
 package christmas.domain;
 
 import static christmas.constants.ExceptionMessage.ORDER_EXCEPTION;
-import static christmas.constants.SystemConstant.BASE_PRICE;
+import static christmas.constants.SystemConstant.BASIC_INIT_NUMBER;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Function;
 
 public class Dishes {
     private final List<Dish> dishes;
@@ -36,22 +37,24 @@ public class Dishes {
     }
 
     public int calculatePrice() {
-        return dishes.stream()
-                .map(Dish::calculatePrice)
-                .reduce(BASE_PRICE.getValue(), Integer::sum);
+        return sumByConditionFrom(Dish::calculatePrice);
     }
 
     public int calculateDishesAmount() {
+        return sumByConditionFrom(Dish::getAmount);
+    }
+
+    private int sumByConditionFrom(Function<Dish, Integer> condition) {
         return dishes.stream()
-                .map(Dish::getAmount)
-                .reduce(0, Integer::sum);
+                .map(condition)
+                .reduce(BASIC_INIT_NUMBER.getValue(), Integer::sum);
     }
 
     public int calculateDiscountOf(String categori, int discountAmount) {
         return dishes.stream()
                 .filter(i -> i.is(categori))
                 .map(i -> i.calculateDiscountFrom(discountAmount))
-                .reduce(0, Integer::sum);
+                .reduce(BASIC_INIT_NUMBER.getValue(), Integer::sum);
     }
 
     public boolean isEmpty() {
