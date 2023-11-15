@@ -39,12 +39,12 @@ public enum Menu {
         return this.name.equals(name);
     }
 
-    public int getPrice() {
-        return this.price;
+    public boolean isEqualCategoryFrom(String category) {
+        return this.category.equals(category);
     }
 
-    public String getCategory() {
-        return this.category;
+    public int getPrice() {
+        return this.price;
     }
 
     @Override

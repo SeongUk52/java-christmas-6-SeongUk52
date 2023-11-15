@@ -7,7 +7,6 @@ import static christmas.constants.SystemString.DISH_SEPARATOR;
 
 import christmas.data.Menu;
 import christmas.utils.Numeral;
-import java.util.Objects;
 
 public class Dish {
     private final Menu menu;
@@ -61,7 +60,7 @@ public class Dish {
     }
 
     public boolean is(String categori) {
-        return Objects.equals(menu.getCategory(), categori);
+        return menu.isEqualCategoryFrom(categori);
     }
 
     public String toMessage() {
