@@ -20,8 +20,8 @@ public class Dish {
 
     public static Dish from(String menuAndAmount) {
         validateMenuFormat(menuAndAmount);
-        String[] splitedInput = menuAndAmount.split(DISH_SEPARATOR.toString());
-        return Dish.of(splitedInput[0], splitedInput[1]);
+        String[] splittedInput = menuAndAmount.split(DISH_SEPARATOR.toString());
+        return Dish.of(splittedInput[0], splittedInput[1]);
     }
 
     private static Dish of(String menu, String amount) {
