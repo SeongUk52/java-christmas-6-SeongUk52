@@ -17,7 +17,7 @@ public enum FreeGiftData {
         this.condition = condition;
     }
 
-    public Dish getFreeGift(int regularPrice) {
+    public Dish applyFreeGiftFrom(int regularPrice) {
         return condition.apply(regularPrice);
     }
 }

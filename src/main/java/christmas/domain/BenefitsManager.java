@@ -40,7 +40,7 @@ public class BenefitsManager {
     private static Dishes createFreeGifts(int regularPrice) {
         return Dishes.from(Arrays
                 .stream(FreeGiftData.values())
-                .map(i -> i.getFreeGift(regularPrice))
+                .map(i -> i.applyFreeGiftFrom(regularPrice))
                 .filter(Objects::nonNull)
                 .toList());
     }
