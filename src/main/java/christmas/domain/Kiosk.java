@@ -5,6 +5,7 @@ import static christmas.constants.CautionCategory.EVENT_THROW_ILLEGAL_ARGUMENT_E
 import static christmas.constants.ExceptionMessage.ORDER_EXCEPTION;
 import static christmas.constants.SystemString.KIOSK_SEPARATOR;
 
+import christmas.constants.CautionCategory;
 import christmas.data.EventCautionCondition;
 import java.util.Arrays;
 import java.util.List;
@@ -31,14 +32,16 @@ public class Kiosk {
     }
 
     public boolean isApplyDiscount() {
-        return Arrays.stream(EventCautionCondition.values())
-                .filter(i -> i.isEqualCategory(EVENT_DISCOUNT_APPLIED))
-                .anyMatch(i -> i.isCondition(dishes));
+        return matchCondition(EVENT_DISCOUNT_APPLIED);
     }
 
     public boolean isExceptionCondition() {
-        return Arrays.stream(EventCautionCondition.values())
-                .filter(i -> i.isEqualCategory(EVENT_THROW_ILLEGAL_ARGUMENT_EXCEPTION))
+        return matchCondition(EVENT_THROW_ILLEGAL_ARGUMENT_EXCEPTION);
+    }
+
+    private boolean matchCondition(CautionCategory category) {
+        return Arrays.stream((EventCautionCondition.values()))
+                .filter(i -> i.isEqualCategory(category))
                 .anyMatch(i -> i.isCondition(dishes));
     }
 
