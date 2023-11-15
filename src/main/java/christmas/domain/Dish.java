@@ -25,7 +25,7 @@ public class Dish {
     }
 
     private static Dish of(String menu, String amount) {
-        validateNumral(amount);
+        validateNumeral(amount);
         return new Dish(findMenuFrom(menu), Integer.parseInt(amount));
     }
 
@@ -37,7 +37,7 @@ public class Dish {
         throwIllegalArgumentExceptionIf(!menuAndAmount.contains(DISH_SEPARATOR.toString()));
     }
 
-    private static void validateNumral(String amount) {
+    private static void validateNumeral(String amount) {
         throwIllegalArgumentExceptionIf(Numeral.notNumeral(amount));
     }
 

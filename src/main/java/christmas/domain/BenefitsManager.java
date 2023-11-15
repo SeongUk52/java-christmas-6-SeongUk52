@@ -68,10 +68,8 @@ public class BenefitsManager {
 
     public Optional<List<String>> toStrings() {
         if (totalFreeGiftToString().isPresent()) {
-            return Optional.of(Stream.concat(discounts.stream()
-                                    .map(Discount::toMessage),
-                            totalFreeGiftToString().get())
-                    .toList());
+            return Optional.of(Stream.concat(discounts.stream().map(Discount::toMessage),
+                    totalFreeGiftToString().get()).toList());
         }
         return Optional.empty();
     }
